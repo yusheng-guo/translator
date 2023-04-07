@@ -1,6 +1,13 @@
+import 'package:translator/service/translate_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:translator/service/translate_text.dart';
+import 'package:translator/ui/color.dart';
+import 'package:translator/ui/widgets/clean_button.dart';
+import 'package:translator/ui/widgets/copy_button.dart';
+import 'package:translator/ui/widgets/input_box.dart';
+import 'package:translator/ui/widgets/loading.dart';
+import 'package:translator/ui/widgets/result_box.dart';
+import 'package:translator/ui/widgets/trans_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -342,9 +349,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: GestureDetector(
+    return SafeArea(
+      child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(
           children: <Widget>[
@@ -358,7 +364,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            const SizedBox(width: 2.0),
+            // const SizedBox(width: 2.0),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -384,7 +390,15 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Container(
                     margin: const EdgeInsets.all(10),
-                    child: Copy(text: out),
+                    child: CopyButton(text: out),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(10),
+                    child: CleanButton(
+                      textController: _textController,
+                    ),
                   ),
                 ),
               ],
@@ -441,147 +455,4 @@ class _HomePageState extends State<HomePage> {
 //   out: out,
 // ),
 
-// 输入框
-class InputBox extends StatefulWidget {
-  final TextEditingController textController;
-  const InputBox({super.key, required this.textController});
 
-  @override
-  State<InputBox> createState() => _InputBoxState();
-}
-
-class _InputBoxState extends State<InputBox> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: const Color(0xFFFFFFFF),
-        border: Border.all(
-          color: const Color(0xFF006494),
-          width: 2,
-          style: BorderStyle.solid,
-        ),
-      ),
-      child: TextField(
-        onChanged: (value) {
-          setState(() {});
-        },
-        controller: widget.textController,
-        minLines: 5,
-        maxLines: 999,
-        decoration: const InputDecoration(
-          hintText: "Tap to enter text...",
-          hintStyle: TextStyle(
-            color: Color(0xFFB7A5A9),
-            fontFamily: 'Roboto',
-            fontSize: 20,
-          ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-          ),
-        ),
-        style: const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
-          // color: Color(0xFF33336c),
-          color: Colors.black,
-        ),
-      ),
-    );
-  }
-}
-
-// 结果篮
-class ResultBox extends StatelessWidget {
-  final String out;
-  const ResultBox({super.key, required this.out});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: const Color(0xFFFFFFFF),
-        border: Border.all(
-          color: const Color(0xFF006494),
-          width: 2,
-          style: BorderStyle.solid,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: SelectableText(
-          out,
-          style: const TextStyle(
-            color: Colors.black,
-            fontFamily: 'Roboto',
-            fontSize: 20,
-          ),
-          showCursor: true,
-          cursorColor: Colors.white,
-          minLines: 5,
-          maxLines: 999,
-          scrollPhysics: const ClampingScrollPhysics(),
-        ),
-      ),
-    );
-  }
-}
-
-// 翻译按钮
-class TranslateButton extends StatelessWidget {
-  final Function trans;
-  const TranslateButton({super.key, required this.trans});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        trans();
-      },
-      child: const Text(
-        "Translate",
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Roboto',
-        ),
-      ),
-    );
-  }
-}
-
-// 赋值按钮
-class Copy extends StatelessWidget {
-  final String text;
-
-  const Copy({Key? key, required this.text}) : super(key: key);
-
-  void _copyToClipboard(BuildContext context) {
-    Clipboard.setData(ClipboardData(text: text));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Copied to clipboard!'),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // return IconButton(
-    //   onPressed: () => _copyToClipboard(context),
-    //   icon: const Icon(Icons.copy),
-    // );
-    return ElevatedButton(
-      child: const Text(
-        "Copy",
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Roboto',
-        ),
-      ),
-      onPressed: () => _copyToClipboard(context),
-    );
-  }
-}
