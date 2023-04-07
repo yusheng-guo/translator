@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:translator/ui/profile.dart';
 import 'package:translator/ui/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,8 @@ class MyApp extends StatelessWidget {
       ),
     );
     return MaterialApp(
-      builder: EasyLoading.init(),
-      // builder: FToastBuilder(),
+      // builder: EasyLoading.init(),
+      builder: FToastBuilder(),
       title: 'Translator',
       theme: ThemeData(
         primaryColor: primaryColor,

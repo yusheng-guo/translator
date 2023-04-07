@@ -47,7 +47,7 @@ class _CopyButtonState extends State<CopyButton> {
     // Custom Toast Position
     fToast.showToast(
       child: toast,
-      gravity: ToastGravity.BOTTOM,
+      gravity: ToastGravity.TOP,
       toastDuration: const Duration(seconds: 2),
     );
   }
