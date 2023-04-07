@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:translator/service/translate_text.dart';
-import 'package:translator/ui/color.dart';
+import 'package:translator/ui/profile.dart';
 
 class TransButton extends StatefulWidget {
   final TextEditingController textController;

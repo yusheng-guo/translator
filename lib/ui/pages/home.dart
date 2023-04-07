@@ -31,24 +31,24 @@ class _HomePageState extends State<HomePage> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: InputBox(
-                    textController: _textController,
-                  ),
-                ),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.3,
-                child: ResultBox(
-                  out: out,
+                child: InputBox(
+                  textController: _textController,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: ResultBox(
+                    out: out,
+                  ),
                 ),
               ),
             ),

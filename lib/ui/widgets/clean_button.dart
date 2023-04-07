@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:translator/ui/color.dart';
+import 'package:translator/ui/profile.dart';
 
 class CleanButton extends StatelessWidget {
   final TextEditingController textController;

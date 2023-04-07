@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:translator/ui/color.dart';
+import 'package:translator/ui/profile.dart';
 
 class ResultBox extends StatelessWidget {
   final String out;
@@ -14,7 +14,7 @@ class ResultBox extends StatelessWidget {
         border: Border.all(
           color: primaryColor,
           width: 2,
-          style: BorderStyle.solid,
+          style: BorderStyle.none,
         ),
       ),
       child: Padding(

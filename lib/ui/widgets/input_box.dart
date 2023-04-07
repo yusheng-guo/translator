@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:translator/ui/color.dart';
+import 'package:translator/ui/profile.dart';
 
 class InputBox extends StatefulWidget {
   final TextEditingController textController;
@@ -26,6 +26,7 @@ class _InputBoxState extends State<InputBox> {
         onChanged: (value) {
           setState(() {});
         },
+        autofocus: true,
         controller: widget.textController,
         minLines: 5,
         maxLines: 999,
