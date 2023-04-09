@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
 import 'package:uuid/uuid.dart';
+import 'package:translator/service/config.dart';
 
 Future<http.Response> doRequest(Map<String, String> data) async {
-  final url = Uri.parse('https://openapi.youdao.com/api');
+  final url = Uri.parse(Config().youdaoApiUrl);
   final response = await http.post(url, body: data);
   return response;
 }
@@ -20,7 +21,7 @@ Future<String> translate(String q) async {
     'q': q,
   };
   var signStr =
-      '${data['appKey']}${truncate(q)}${data['salt']!}${data['curtime']}CpAWyN5RlrJMdkVVkpJivTXueufAL3oB';
+      '${data['appKey']}${truncate(q)}${data['salt']!}${data['curtime']}${Config().youdaoSecretKey}';
   var sign = encrypt(signStr);
   data['sign'] = sign;
 

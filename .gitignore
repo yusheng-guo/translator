@@ -51,3 +51,6 @@ app.*.map.json
 /linux/
 /ios/
 /test/
+
+# ignore config.json
+/assets/config/config.json

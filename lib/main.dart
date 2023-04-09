@@ -1,11 +1,13 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:translator/service/config.dart';
 import 'package:translator/ui/profile.dart';
 import 'package:translator/ui/pages/home.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Config().loadFromAsset();
   runApp(const MyApp());
 }
 
@@ -21,8 +23,8 @@ class MyApp extends StatelessWidget {
       ),
     );
     return MaterialApp(
-      // builder: EasyLoading.init(),
-      builder: FToastBuilder(),
+      builder: EasyLoading.init(),
+      // builder: FToastBuilder(),
       title: 'Translator',
       theme: ThemeData(
         primaryColor: primaryColor,
