@@ -21,3 +21,12 @@ samples, guidance on mobile development, and a full API reference.
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
+
+### Config
+```json
+{
+  "youdaoApiUrl": "https://openapi.youdao.com/api",
+  "youdaoAppKey": "有道翻译 应用ID",
+  "youdaoSecretKey":"有道翻译 应用秘钥"
+}
+```
