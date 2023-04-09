@@ -22,7 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-### Config
+### Config : api-related json configuration file
 ```json
 {
   "youdaoApiUrl": "https://openapi.youdao.com/api",
@@ -30,3 +30,7 @@ samples, guidance on mobile development, and a full API reference.
   "youdaoSecretKey":"有道翻译 应用秘钥"
 }
 ```
+
+### Lanzou Cloud Download
+Url : https://wwho.lanzoum.com/b03k4nxla
+Password : 73wy
