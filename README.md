@@ -36,4 +36,4 @@ Url : https://wwho.lanzoum.com/b03k4nxla
 Password : 73wy
 
 ### Screenshots
-![image]()
+![image](https://github.com/yushengguo557/translator/blob/main/assets/images/screenshots/v1.0.0.png?raw=true)
