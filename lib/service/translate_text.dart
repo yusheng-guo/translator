@@ -11,9 +11,26 @@ Future<http.Response> doRequest(Map<String, String> data) async {
 }
 
 Future<String> translate(String q) async {
+  // en->ch or ch->en
+  var chineseReg = RegExp(r'[\u4e00-\u9fa5]');
+  var englishReg = RegExp(r'[a-zA-Z]');
+
+  var chinese = chineseReg.allMatches(q).length;
+  var english = englishReg.allMatches(q).length;
+
+  final String from;
+  final String to;
+  if (chinese > english) {
+    from = 'zh-CHS';
+    to = 'en';
+  } else {
+    from = 'en';
+    to = 'zh-CHS';
+  }
+
   var data = {
-    'from': 'en',
-    'to': 'zh-CHS',
+    'from': from,
+    'to': to,
     'signType': 'v3',
     'curtime': '${DateTime.now().millisecondsSinceEpoch ~/ 1000}',
     'salt': const Uuid().v1(),
