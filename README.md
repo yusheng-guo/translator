@@ -37,3 +37,8 @@ Password : 73wy
 
 ### Screenshots
 ![image](https://github.com/yushengguo557/translator/blob/main/assets/images/screenshots/v1.0.0.png?raw=true)
+
+### Build
+```shell
+flutter build apk  --split-per-abi
+```
